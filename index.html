@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Festive Food & Beverage Ltd — Northern Cyprus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    .site-logo { height: 48px; width: auto; display: block; }
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E8D08A;
+      --cream: #FAF7F2;
+      --dark: #1A1610;
+      --mid: #3D3426;
+      --text: #4A4035;
+      --border: rgba(201,168,76,0.25);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--dark);
+      padding: 0 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-size: 1.25rem;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    nav a {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-left: 2rem;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--gold); }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--dark);
+      min-height: 520px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 5vw 100px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 100%, rgba(201,168,76,0.12) 0%, transparent 70%),
+        repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(201,168,76,0.04) 60px),
+        repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(201,168,76,0.04) 60px);
+    }
+
+    .hero-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--border);
+      padding: 6px 18px;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      color: #fff;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      position: relative;
+      max-width: 700px;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--gold);
+    }
+
+    .hero p {
+      color: rgba(255,255,255,0.5);
+      font-size: 1rem;
+      max-width: 480px;
+      margin-top: 1.5rem;
+      position: relative;
+    }
+
+    .divider-line {
+      width: 60px;
+      height: 1px;
+      background: var(--gold);
+      margin: 2.5rem auto;
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 80px 5vw;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      color: var(--dark);
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+
+    p { margin-bottom: 1rem; color: var(--text); }
+
+    /* ── ABOUT GRID ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    @media (max-width: 700px) {
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      nav { display: none; }
+    }
+
+    .about-aside {
+      padding: 32px;
+      border: 1px solid var(--border);
+      background: #fff;
+    }
+
+    .about-aside h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--dark);
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-aside ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .about-aside ul li {
+      padding: 6px 0;
+      font-size: 0.9rem;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .about-aside ul li::before {
+      content: '—';
+      color: var(--gold);
+      font-size: 0.8rem;
+    }
+
+    /* ── SERVICES ── */
+    .services-bg {
+      background: var(--dark);
+    }
+
+    .services-bg section {
+      padding: 80px 5vw;
+    }
+
+    .services-bg h2 { color: #fff; }
+    .services-bg .section-label { color: var(--gold-light); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      margin-top: 3rem;
+      border: 1px solid var(--border);
+    }
+
+    .service-card {
+      background: var(--dark);
+      padding: 36px 28px;
+      transition: background 0.2s;
+    }
+
+    .service-card:hover { background: var(--mid); }
+
+    .service-icon {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+    }
+
+    .service-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .service-card p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ── PRIVACY ── */
+    #privacy {
+      border-top: 1px solid var(--border);
+    }
+
+    .policy-block {
+      background: #fff;
+      border: 1px solid var(--border);
+      padding: 40px;
+      margin-top: 2rem;
+    }
+
+    .policy-block h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin: 1.5rem 0 0.5rem;
+    }
+
+    .policy-block h3:first-child { margin-top: 0; }
+
+    .policy-block p, .policy-block li {
+      font-size: 0.88rem;
+      line-height: 1.75;
+      color: #5a5248;
+    }
+
+    .policy-block ul {
+      padding-left: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    /* ── CONTACT ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 700px) {
+      .contact-grid { grid-template-columns: 1fr; }
+      .policy-block { padding: 24px; }
+    }
+
+    .contact-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .contact-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .contact-value {
+      font-size: 0.95rem;
+      color: var(--dark);
+      font-weight: 400;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      text-align: center;
+      padding: 32px 5vw;
+      border-top: 1px solid var(--border);
+    }
+
+    footer p {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.3);
+      margin: 0;
+      letter-spacing: 0.05em;
+    }
+
+    footer span { color: var(--gold); }
+
+    /* ── SEPARATOR ── */
+    .ornament {
+      text-align: center;
+      color: var(--gold);
+      font-size: 1.2rem;
+      letter-spacing: 0.4em;
+      margin: 0 auto;
+      opacity: 0.5;
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <img src="logo.png" alt="Festive Food & Beverage" class="site-logo" />
+  <nav>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#privacy">Privacy</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">Est. Northern Cyprus · KKTC</div>
+  <h1>Premium Food &amp; Beverage <em>Distribution</em></h1>
+  <p>Supplying hotels, casinos, restaurants, and food service businesses across Northern Cyprus with quality products and reliable service.</p>
+</div>
+
+<!-- ABOUT -->
+<div id="about">
+  <section>
+    <div class="about-grid">
+      <div>
+        <div class="section-label">Who We Are</div>
+        <h2>Your Trusted Distribution Partner</h2>
+        <p>Festive Food and Beverage Ltd is a leading food and beverage distribution company based in Nicosia, Northern Cyprus. We specialise in supplying a wide range of quality food and beverage products to the hospitality and food service sector.</p>
+        <p>Our clients include hotels, casinos, restaurants, cafés, and institutional food service providers throughout Northern Cyprus. We are committed to reliable delivery, competitive pricing, and building long-term partnerships with our customers.</p>
+        <p>With an experienced team and a deep understanding of the local market, Festive Food and Beverage Ltd ensures that every order is handled with care and delivered on time.</p>
+      </div>
+      <div class="about-aside">
+        <h3>Company Details</h3>
+        <ul>
+          <li>Festive Food and Beverage Ltd</li>
+          <li>Registered in Northern Cyprus (KKTC)</li>
+          <li>Kahramanlar Cad. No: 6, Minareliköy, Lefkoşa</li>
+          <li>Food &amp; Beverage Distribution</li>
+          <li>Serving Hotels, Casinos &amp; Restaurants</li>
+          <li>B2B Trade Only</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- SERVICES -->
+<div class="services-bg" id="services">
+  <section style="max-width:1100px;margin:0 auto;">
+    <div class="section-label">What We Do</div>
+    <h2>Our Services</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🥩</div>
+        <h3>Food Products</h3>
+        <p>Fresh, frozen, and dry food products sourced from trusted suppliers and delivered to your door.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🍷</div>
+        <h3>Beverages</h3>
+        <p>Alcoholic and non-alcoholic beverages for hospitality businesses of all sizes.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏨</div>
+        <h3>Hotel Supply</h3>
+        <p>Comprehensive supply solutions for hotels and resort properties across Northern Cyprus.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🚚</div>
+        <h3>Reliable Delivery</h3>
+        <p>Regular scheduled deliveries with a dedicated sales and logistics team.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- PRIVACY POLICY -->
+<div id="privacy">
+  <section>
+    <div class="section-label">Legal</div>
+    <h2>Privacy Policy</h2>
+    <p style="font-size:0.85rem;color:#888;">Last updated: March 2026</p>
+
+    <div class="policy-block">
+      <h3>1. Introduction</h3>
+      <p>Festive Food and Beverage Ltd ("we", "our", or "us") is committed to protecting your personal information. This Privacy Policy explains how we collect, use, and safeguard data when you contact us or do business with us, including through WhatsApp and other communication channels.</p>
+
+      <h3>2. Information We Collect</h3>
+      <p>We may collect and process the following personal data:</p>
+      <ul>
+        <li>Contact details (name, phone number, email address)</li>
+        <li>Business information (company name, delivery address)</li>
+        <li>Order and transaction history</li>
+        <li>Messages and communications sent to us via WhatsApp or other channels</li>
+      </ul>
+
+      <h3>3. How We Use Your Information</h3>
+      <p>We use your personal data solely for legitimate business purposes, including:</p>
+      <ul>
+        <li>Processing and fulfilling your orders</li>
+        <li>Communicating with you about your orders and our products</li>
+        <li>Managing your account and business relationship with us</li>
+        <li>Sending order confirmations and delivery updates via WhatsApp</li>
+        <li>Complying with legal obligations</li>
+      </ul>
+
+      <h3>4. WhatsApp Communications</h3>
+      <p>We use WhatsApp Business to communicate with our clients regarding orders, deliveries, and business matters. By contacting us on WhatsApp, you consent to receiving order-related messages from us through this channel. We will not use WhatsApp to send unsolicited marketing messages.</p>
+
+      <h3>5. Data Sharing</h3>
+      <p>We do not sell, rent, or share your personal data with third parties for marketing purposes. We may share data with service providers who assist in our operations (such as logistics partners) under strict confidentiality obligations.</p>
+
+      <h3>6. Data Retention</h3>
+      <p>We retain your personal data only for as long as necessary to fulfil the purposes described in this policy, or as required by law.</p>
+
+      <h3>7. Your Rights</h3>
+      <p>You have the right to request access to, correction of, or deletion of your personal data held by us. To exercise these rights, please contact us using the details below.</p>
+
+      <h3>8. Security</h3>
+      <p>We implement appropriate technical and organisational measures to protect your personal data against unauthorised access, loss, or misuse.</p>
+
+      <h3>9. Contact Us</h3>
+      <p>If you have any questions about this Privacy Policy or how we handle your data, please contact us at:</p>
+      <p><strong>Festive Food and Beverage Ltd</strong><br>
+      Kahramanlar Cad. No: 6, Minareliköy, Lefkoşa, KKTC<br>
+      Phone: +90 533 889 36 63<br>
+      Email: info@festiveltd.com</p>
+
+      <h3>10. Changes to This Policy</h3>
+      <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated date.</p>
+    </div>
+  </section>
+</div>
+
+<!-- CONTACT -->
+<div style="background:#fff;border-top:1px solid var(--border);" id="contact">
+  <section>
+    <div class="section-label">Get In Touch</div>
+    <h2>Contact Us</h2>
+    <p>For orders, product enquiries, or to open a trade account, please reach out to our team.</p>
+    <div class="contact-grid">
+      <div style="display:flex;flex-direction:column;gap:28px;">
+        <div class="contact-item">
+          <span class="contact-label">Company</span>
+          <span class="contact-value">Festive Food and Beverage Ltd</span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">Address</span>
+          <span class="contact-value">Kahramanlar Cad. No: 6<br>Minareliköy, Lefkoşa<br>Northern Cyprus (KKTC)</span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">Phone / WhatsApp</span>
+          <span class="contact-value">+90 533 889 36 63</span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">Email</span>
+          <span class="contact-value"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6a03040c052a0c0f191e031c0f061e0e44090507">[email&#160;protected]</a></span>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:28px;">
+        <div class="contact-item">
+          <span class="contact-label">Business Type</span>
+          <span class="contact-value">Food &amp; Beverage Distribution (B2B)</span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">Region</span>
+          <span class="contact-value">Northern Cyprus</span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">Operating Hours</span>
+          <span class="contact-value">Monday – Friday: 08:00 – 18:00<br>Saturday: 08:00 – 13:00</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 <span>Festive Food and Beverage Ltd</span> 
